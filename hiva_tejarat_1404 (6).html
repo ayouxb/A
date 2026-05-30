@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>گزارش هیوا تجارت ۱۴۰۴</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+:root{--navy:#1a3a5c;--blue:#2563a8;--bg:#f4f7fc;--white:#fff;--border:#dde4ef;--muted:#64748b;--text:#1e293b;--green:#0f766e;--amber:#b45309;--red:#dc2626;--purple:#7c3aed;--teal:#0891b2;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Vazirmatn',Tahoma,sans-serif;background:var(--bg);color:var(--text);font-size:13px;direction:rtl;}
+/* topbar */
+.topbar{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;padding:20px 36px;display:flex;justify-content:space-between;align-items:center;gap:20px;}
+.topbar h1{font-size:20px;font-weight:700;}
+.topbar p{font-size:11px;opacity:.8;margin-top:3px;}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px;}
+.badge{background:rgba(255,255,255,.15);border-radius:20px;padding:3px 12px;font-size:10px;}
+.logo{text-align:left;font-size:11px;opacity:.75;line-height:2;}
+.logo b{font-size:22px;font-weight:700;display:block;color:#fff;}
+/* nav */
+.nav{background:var(--navy);display:flex;gap:2px;padding:0 28px;overflow-x:auto;}
+.nav-btn{padding:10px 20px;border:none;background:none;color:rgba(255,255,255,.6);font-family:'Vazirmatn',Tahoma,sans-serif;font-size:12px;font-weight:500;cursor:pointer;border-bottom:3px solid transparent;transition:.2s;white-space:nowrap;}
+.nav-btn:hover{color:#fff;background:rgba(255,255,255,.07);}
+.nav-btn.on{color:#fff;border-bottom-color:#60a5fa;background:rgba(255,255,255,.1);}
+.page{display:none;}.page.on{display:block;}
+/* wrap */
+.wrap{max-width:1300px;margin:0 auto;padding:22px 28px 60px;}
+.sec{font-size:14px;font-weight:700;color:var(--navy);border-right:4px solid var(--blue);padding-right:10px;margin:26px 0 13px;}
+/* KPI */
+.kpi-grid{display:grid;gap:10px;margin-bottom:10px;}
+.g6{grid-template-columns:repeat(6,1fr);}
+.g5{grid-template-columns:repeat(5,1fr);}
+.g3{grid-template-columns:repeat(3,1fr);}
+.kpi{background:var(--white);border:1px solid var(--border);border-radius:11px;padding:13px 11px;text-align:center;box-shadow:0 2px 8px rgba(26,58,92,.07);position:relative;overflow:hidden;}
+.kpi::before{content:'';position:absolute;top:0;right:0;left:0;height:3px;background:var(--ac,var(--blue));}
+.kpi .lb{font-size:10px;color:var(--muted);margin-bottom:4px;line-height:1.4;}
+.kpi .vl{font-size:16px;font-weight:700;color:var(--navy);}
+.kpi .sb{font-size:10px;color:var(--muted);margin-top:2px;}
+.kpi-gold{background:linear-gradient(135deg,#fffbeb,#fff);border-color:#f59e0b;}
+.kpi-gold::before{background:#f59e0b;}
+.kpi-gold .lb{color:#92400e;}.kpi-gold .vl{color:#78350f;}
+/* exec summary */
+.exec-box{background:var(--white);border:1px solid var(--border);border-radius:13px;padding:20px 24px;box-shadow:0 2px 8px rgba(26,58,92,.07);margin-bottom:20px;}
+.exec-box h2{font-size:14px;font-weight:700;color:var(--navy);margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.insight-list{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.insight{background:var(--bg);border-radius:9px;padding:12px 14px;border-right:3px solid var(--ac,var(--blue));}
+.insight .it{font-size:11px;color:var(--muted);margin-bottom:3px;}
+.insight .iv{font-size:13px;font-weight:600;color:var(--text);}
+/* charts */
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:20px;}
+.cg3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:20px;}
+.cb{background:var(--white);border:1px solid var(--border);border-radius:13px;padding:16px 18px;box-shadow:0 2px 8px rgba(26,58,92,.07);}
+.cb h3{font-size:12px;font-weight:600;color:var(--navy);margin-bottom:10px;}
+.lgnd{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:8px;}
+.lgnd span{display:flex;align-items:center;gap:4px;font-size:10px;color:var(--muted);}
+.lsq{width:8px;height:8px;border-radius:2px;flex-shrink:0;}
+/* tabs */
+.tab-bar{display:flex;gap:4px;flex-wrap:wrap;border-bottom:2px solid var(--border);}
+.tb{padding:7px 16px;border:1px solid transparent;border-bottom:none;background:none;font-family:'Vazirmatn',Tahoma,sans-serif;font-size:12px;font-weight:500;color:var(--muted);cursor:pointer;border-radius:8px 8px 0 0;position:relative;bottom:-2px;transition:.15s;}
+.tb:hover{background:#e8f0fb;color:var(--blue);}
+.tb.on{background:var(--white);color:var(--navy);font-weight:700;border-color:var(--border);border-bottom-color:var(--white);}
+.cb-badge{display:inline-block;font-size:9px;font-weight:600;padding:1px 5px;border-radius:3px;margin-right:3px;vertical-align:middle;}
+.AED{background:#fef3c7;color:#92400e;}.OMR{background:#d1fae5;color:#065f46;}
+.pnl{display:none;}.pnl.on{display:block;}
+/* table */
+.tw{overflow-x:auto;border-radius:11px;border:1px solid var(--border);margin-top:1px;}
+table{width:100%;border-collapse:collapse;font-size:11px;direction:rtl;}
+th{background:var(--navy);color:#fff;padding:8px 10px;text-align:right;font-weight:600;font-size:10px;white-space:nowrap;position:sticky;top:0;z-index:1;}
+th.c{text-align:center;}td.c{text-align:center;}
+td{padding:7px 10px;text-align:right;border-bottom:1px solid var(--border);white-space:nowrap;}
+tr:hover td{background:#f0f6ff;}
+tr.tot td{background:var(--navy);color:#fff;font-weight:700;}
+tr.tot:hover td{background:var(--blue);}
+tr.best td{background:#ecfdf5;}
+.neg{color:var(--red);}.pos{color:var(--green);}
+/* radar */
+.radar-wrap{display:flex;justify-content:center;align-items:center;}
+/* rank badge */
+.rnk{display:inline-block;width:20px;height:20px;border-radius:50%;font-size:10px;font-weight:700;line-height:20px;text-align:center;margin-left:4px;}
+.rnk-1{background:#fde68a;color:#78350f;}
+.rnk-2{background:#e0e7ff;color:#3730a3;}
+.rnk-3{background:#d1fae5;color:#065f46;}
+/* print */
+@media print{
+  .nav,.topbar .badges{display:none;}
+  .page{display:block!important;}
+  body{background:#fff;}
+  .cb{box-shadow:none;border:1px solid #ccc;}
+}
+footer{background:var(--navy);color:rgba(255,255,255,.5);text-align:center;padding:12px;font-size:11px;margin-top:36px;}
+.print-btn{float:left;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);color:#fff;padding:5px 14px;border-radius:8px;font-family:'Vazirmatn',Tahoma,sans-serif;font-size:11px;cursor:pointer;}
+.print-btn:hover{background:rgba(255,255,255,.25);}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <div>
+    <h1>گزارش جامع عملکرد شعب — بخش میوه</h1>
+    <p>شرکت هیوا تجارت &nbsp;·&nbsp; سال مالی ۱۴۰۴</p>
+    <div class="badges">
+      <span class="badge">AED مستقیم: سعید کرمی · گلفود · المرتضی</span>
+      <span class="badge">OMR × ۹.۵ = AED: فیت استور · سکند گلف</span>
+    </div>
+  </div>
+  <div class="logo">
+    <b>هیوا تجارت</b>
+    <span id="rdate"></span>
+    <button class="print-btn" onclick="window.print()">🖨 چاپ</button>
+  </div>
+</div>
+
+<nav class="nav">
+  <button class="nav-btn on" onclick="showPage('p-exec',this)">📊 خلاصه اجرایی</button>
+  <button class="nav-btn" onclick="showPage('p-rial',this)">💰 عملکرد ریالی</button>
+  <button class="nav-btn" onclick="showPage('p-aed',this)">💱 عملکرد ارزی (AED)</button>
+  <button class="nav-btn" onclick="showPage('p-cost',this)">📦 تحلیل هزینه‌ها</button>
+  <button class="nav-btn" onclick="showPage('p-rank',this)">🏆 رنکینگ شعب</button>
+  <button class="nav-btn" onclick="showPage('p-detail',this)">🔍 جزئیات ماهانه</button>
+</nav>
+
+<!-- ═══════ PAGE 1: EXEC SUMMARY ═══════ -->
+<div id="p-exec" class="page on">
+<div class="wrap">
+  <div class="sec">خلاصه اجرایی — نگاه سریع مدیریتی</div>
+  <div class="exec-box">
+    <h2>📌 نکات کلیدی سال ۱۴۰۴</h2>
+    <div class="insight-list" id="insightList"></div>
+  </div>
+  <div class="kpi-grid g6" id="kpiExec"></div>
+  <div class="sec">مقایسه سریع شعب</div>
+  <div class="cg">
+    <div class="cb"><h3>سود ناخالص ریالی هر شعبه (میلیارد)</h3><div class="lgnd" id="lgE1"></div><div style="height:220px;position:relative"><canvas id="cE1"></canvas></div></div>
+    <div class="cb"><h3>حاشیه سود هر شعبه (%)</h3><div style="height:240px;position:relative"><canvas id="cE2"></canvas></div></div>
+  </div>
+  <div class="cg">
+    <div class="cb"><h3>روند ماهانه سود کل (میلیارد ریال)</h3><div style="height:230px;position:relative"><canvas id="cE3"></canvas></div></div>
+    <div class="cb"><h3>سود ارزی ماهانه کل شرکت (AED)</h3><div style="height:230px;position:relative"><canvas id="cE4"></canvas></div></div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════ PAGE 2: RIAL ═══════ -->
+<div id="p-rial" class="page">
+<div class="wrap">
+  <div class="sec">خلاصه ریالی کل شرکت</div>
+  <div class="kpi-grid g6" id="kpiR"></div>
+  <div class="sec">نمودارها</div>
+  <div class="cg">
+    <div class="cb"><h3>فروش خالص هر شعبه (میلیارد ریال)</h3><div class="lgnd" id="lgR1"></div><div style="height:230px;position:relative"><canvas id="cR1"></canvas></div></div>
+    <div class="cb"><h3>سهم فروش خالص</h3><div class="lgnd" id="lgR2"></div><div style="height:230px;position:relative"><canvas id="cR2"></canvas></div></div>
+  </div>
+  <div class="cg">
+    <div class="cb"><h3>سود ناخالص ماهانه هر شعبه (میلیارد)</h3><div class="lgnd" id="lgR3"></div><div style="height:240px;position:relative"><canvas id="cR3"></canvas></div></div>
+    <div class="cb"><h3>روند نرخ تبدیل ریال (میانگین ماهانه)</h3><div class="lgnd" id="lgR4"></div><div style="height:240px;position:relative"><canvas id="cR4"></canvas></div></div>
+  </div>
+  <div class="sec">جدول مقایسه‌ای سالانه — ریالی</div>
+  <div class="tw"><table><thead><tr>
+    <th>شعبه</th><th class="c">فروش خالص (ریال)</th><th class="c">هزینه کل (ریال)</th><th class="c">سود ناخالص (ریال)</th><th class="c">حاشیه سود</th><th class="c">پالت</th><th class="c">مقدار سیب (کیلو)</th><th class="c">سود به ازای پالت (ریال)</th>
+  </tr></thead><tbody id="tblR"></tbody><tfoot id="tblRF"></tfoot></table></div>
+</div>
+</div>
+
+<!-- ═══════ PAGE 3: AED ═══════ -->
+<div id="p-aed" class="page">
+<div class="wrap">
+  <div class="sec">خلاصه ارزی — درهم امارات (AED)</div>
+  <div class="kpi-grid g6" id="kpiAED"></div>
+  <div class="sec">جزئیات سود ارزی هر شعبه</div>
+  <div class="kpi-grid g5" id="kpiAED2"></div>
+  <div class="sec">نمودارها</div>
+  <div class="cg">
+    <div class="cb"><h3>سود ارزی هر شعبه — کل سال (AED)</h3><div class="lgnd" id="lgA1"></div><div style="height:230px;position:relative"><canvas id="cA1"></canvas></div></div>
+    <div class="cb"><h3>سود ارزی ماهانه انباشته — همه شعب (AED)</h3><div class="lgnd" id="lgA2"></div><div style="height:230px;position:relative"><canvas id="cA2"></canvas></div></div>
+  </div>
+  <div class="sec">جدول مقایسه ارزی</div>
+  <div class="tw"><table><thead><tr>
+    <th>شعبه</th><th>ارز اصلی</th><th class="c">فروش ارزی</th><th class="c">سود ارزی (واحد اصلی)</th><th class="c">سود ارزی (AED)</th><th class="c">فروش ریالی</th><th class="c">حاشیه سود</th>
+  </tr></thead><tbody id="tblA"></tbody><tfoot id="tblAF"></tfoot></table></div>
+</div>
+</div>
+
+<!-- ═══════ PAGE 4: COST ═══════ -->
+<div id="p-cost" class="page">
+<div class="wrap">
+  <div class="sec">تحلیل هزینه‌های عملیاتی</div>
+  <div class="kpi-grid g3" id="kpiCost"></div>
+  <div class="sec">ترکیب هزینه‌ها</div>
+  <div class="cg">
+    <div class="cb"><h3>سهم اقلام هزینه — کل شرکت</h3><div class="lgnd" id="lgC1"></div><div style="height:230px;position:relative"><canvas id="cC1"></canvas></div></div>
+    <div class="cb"><h3>هزینه کرایه یخچال ماهانه — همه شعب (میلیارد)</h3><div class="lgnd" id="lgC2"></div><div style="height:230px;position:relative"><canvas id="cC2"></canvas></div></div>
+  </div>
+  <div class="cg">
+    <div class="cb"><h3>نسبت هزینه یخچال به فروش (%)</h3><div class="lgnd" id="lgC3"></div><div style="height:230px;position:relative"><canvas id="cC3"></canvas></div></div>
+    <div class="cb"><h3>هزینه تخلیه/بارگیری ماهانه (میلیارد)</h3><div class="lgnd" id="lgC4"></div><div style="height:230px;position:relative"><canvas id="cC4"></canvas></div></div>
+  </div>
+  <div class="sec">جدول تفکیک هزینه‌ها — سالانه</div>
+  <div class="tw"><table><thead><tr>
+    <th>شعبه</th><th class="c">هزینه اصلی کالا</th><th class="c">کرایه یخچال</th><th class="c">تخلیه/بارگیری</th><th class="c">خنک‌کردن</th><th class="c">هزینه کل</th><th class="c">% یخچال از کل</th><th class="c">% تخلیه از کل</th><th class="c">% خنک از کل</th>
+  </tr></thead><tbody id="tblC"></tbody><tfoot id="tblCF"></tfoot></table></div>
+</div>
+</div>
+
+<!-- ═══════ PAGE 5: RANKING ═══════ -->
+<div id="p-rank" class="page">
+<div class="wrap">
+  <div class="sec">🏆 رنکینگ شعب بر اساس معیارهای مختلف</div>
+  <div class="cg3">
+    <div class="cb"><h3>رنکینگ بر اساس سود ناخالص ریالی</h3><div id="rnkSR"></div></div>
+    <div class="cb"><h3>رنکینگ بر اساس حاشیه سود</h3><div id="rnkHSH"></div></div>
+    <div class="cb"><h3>رنکینگ بر اساس سود ارزی (AED)</h3><div id="rnkAED"></div></div>
+  </div>
+  <div class="cg">
+    <div class="cb"><h3>سود به ازای هر پالت (میلیون ریال)</h3><div class="lgnd" id="lgRK1"></div><div style="height:230px;position:relative"><canvas id="cRK1"></canvas></div></div>
+    <div class="cb"><h3>مقایسه چندمعیاره شعب (نرمال‌شده)</h3><div style="height:280px;position:relative"><canvas id="cRK2"></canvas></div></div>
+  </div>
+  <div class="sec">بهترین ماه هر شعبه</div>
+  <div class="tw"><table><thead><tr>
+    <th>شعبه</th><th class="c">بهترین ماه</th><th class="c">سود ناخالص (ریال)</th><th class="c">حاشیه سود</th><th class="c">سود ارزی (AED)</th>
+  </tr></thead><tbody id="tblBest"></tbody></table></div>
+</div>
+</div>
+
+<!-- ═══════ PAGE 6: DETAIL ═══════ -->
+<div id="p-detail" class="page">
+<div class="wrap">
+  <div class="sec">جزئیات ماهانه هر شعبه</div>
+  <div class="tab-bar" id="tabBar"></div>
+  <div id="tabPanels"></div>
+</div>
+</div>
+
+<footer>گزارش محرمانه · شرکت هیوا تجارت · بخش میوه سال ۱۴۰۴ · تهیه‌شده برای مدیرعامل</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script>
+const OMR2AED=9.5;
+const MO=['فروردین','اردیبهشت','خرداد','تیر','مرداد','شهریور','مهر','آبان','آذر','دی','بهمن','اسفند'];
+const BR=['سعید کرمی','فیت استور','گلفود','المرتضی','سکند گلف'];
+const CLR=['#2563a8','#0f766e','#b45309','#7c3aed','#dc2626'];
+
+/* ── DATA ── */
+const DATA={
+"سعید کرمی":{curr:"AED",mo:{
+  "شهریور":{fr:9171016844,hz:8855994744,sr:315022099,fe:33814,se:1014.02,ykh:304787258,tkh:28703705,xnk:273560000,nerkh:274042,pal:11,miq:6839,hshe:.034},
+  "مهر":   {fr:156233066045,hz:132626328765,sr:23606737279,fe:517167,se:77874.30,ykh:6816151397,tkh:0,xnk:7185760000,nerkh:301970,pal:246,miq:179644,hshe:.151},
+  "آبان":  {fr:128297464697,hz:110555843680,sr:17741621016,fe:434282,se:59909.24,ykh:5680126164,tkh:1071035905,xnk:5838200000,nerkh:295168,pal:205,miq:145955,hshe:.138},
+  "آذر":   {fr:103356927850,hz:80943551898,sr:22413375951,fe:307416,se:66266.71,ykh:4073066078,tkh:2213000000,xnk:4140880000,nerkh:338415,pal:147,miq:103522,hshe:.217},
+  "دی":    {fr:140712032000,hz:106610853738,sr:34101178261,fe:376147,se:91058.93,ykh:5292215109,tkh:4767000000,xnk:5408240000,nerkh:372882,pal:191,miq:135206,hshe:.242},
+  "بهمن":  {fr:137690528000,hz:100797571055,sr:36892956944,fe:328853,se:88105.67,ykh:4932011986,tkh:4990000000,xnk:4581760000,nerkh:420731,pal:178,miq:114544,hshe:.268},
+  "اسفند": {fr:53169888000,hz:28562460470,sr:24607427529,fe:119752,se:55422.13,ykh:1523936288,tkh:750000000,xnk:1434440000,nerkh:444000,pal:55,miq:35861,hshe:.463},
+}},
+"فیت استور":{curr:"OMR",mo:{
+  "خرداد":  {fr:2978794350,hz:2454701003,sr:524093346,fe:1402,se:241.44*OMR2AED,ykh:86456978,tkh:11111112,xnk:0,nerkh:2124675,pal:3,miq:0,hshe:.176},
+  "تیر":    {fr:409168778,hz:273252693,sr:135916084,fe:178,se:57.63*OMR2AED,ykh:28818993,tkh:3448276,xnk:0,nerkh:2298701,pal:1,miq:0,hshe:.332},
+  "شهریور": {fr:12741515447,hz:9241637418,sr:3499878028,fe:4745,se:1081.58*OMR2AED,ykh:605198848,tkh:35446508,xnk:510480000,nerkh:2664817,pal:21,miq:12762,hshe:.275},
+  "مهر":    {fr:119956060868,hz:92267713128,sr:27688347739,fe:41920,se:7650.76*OMR2AED,ykh:5677341572,tkh:702686555,xnk:5146480000,nerkh:2870788,pal:197,miq:128662,hshe:.231},
+  "آبان":   {fr:96220295277,hz:73056498761,sr:23163796515,fe:35619,se:6685.67*OMR2AED,ykh:4639857833,tkh:444316730,xnk:4052120000,nerkh:2728064,pal:161,miq:101303,hshe:.241},
+  "آذر":    {fr:103283472600,hz:74696881168,sr:28586591431,fe:32592,se:7600.50*OMR2AED,ykh:4697495818,tkh:150000000,xnk:4144920000,nerkh:3174525,pal:163,miq:103623,hshe:.277},
+  "دی":     {fr:124177970700,hz:86740230158,sr:37437740542,fe:34879,se:9155.06*OMR2AED,ykh:5533246608,tkh:0,xnk:4798160000,nerkh:3560140,pal:192,miq:119954,hshe:.301},
+  "بهمن":   {fr:160696597950,hz:100695722112,sr:60000875837,fe:41309,se:13906.22*OMR2AED,ykh:6311359412,tkh:0,xnk:5573520000,nerkh:3874248,pal:219,miq:139338,hshe:.373},
+  "اسفند":  {fr:54224988300,hz:25576281694,sr:28648706606,fe:13051,se:6543.78*OMR2AED,ykh:1613863594,tkh:0,xnk:1422520000,nerkh:4154456,pal:56,miq:35563,hshe:.528},
+}},
+"گلفود":{curr:"AED",mo:{
+  "شهریور": {fr:8593483380,hz:6913864697,sr:1679618683,fe:30180,se:5898,ykh:291644287,tkh:0,xnk:370800000,nerkh:284741,pal:14,miq:9270,hshe:.146},
+  "مهر":    {fr:110537262028,hz:83540424998,sr:26996837029,fe:369324,se:89883,ykh:3499731445,tkh:0,xnk:4543040000,nerkh:298470,pal:168,miq:113576,hshe:.190},
+  "آبان":   {fr:52451710748,hz:43080320015,sr:9371390732,fe:175983,se:31129,ykh:1895687866,tkh:0,xnk:2167840000,nerkh:297000,pal:91,miq:54196,hshe:.130},
+  "آذر":    {fr:58396551135,hz:42480916944,sr:15915634191,fe:177742,se:48379,ykh:1770697457,tkh:0,xnk:2135760000,nerkh:330129,pal:85,miq:53394,hshe:.197},
+  "دی":     {fr:82417555400,hz:69711935231,sr:12705620168,fe:227557,se:35062,ykh:2791452462,tkh:0,xnk:3739880000,nerkh:362220,pal:134,miq:93497,hshe:.104},
+  "بهمن":   {fr:78935090200,hz:58059103361,sr:20875986838,fe:195337,se:51483,ykh:2312322562,tkh:0,xnk:3146160000,nerkh:403073,pal:111,miq:78654,hshe:.181},
+  "اسفند":  {fr:35965784600,hz:29091043948,sr:6874740652,fe:85038,se:16464,ykh:1166577148,tkh:0,xnk:1575080000,nerkh:424635,pal:56,miq:39377,hshe:.126},
+}},
+"المرتضی":{curr:"AED",mo:{
+  "خرداد":  {fr:3872679000,hz:3499420821,sr:373258178,fe:17375,se:1674.64,ykh:138013960,tkh:16379310,xnk:0,nerkh:222888,pal:5,miq:0,hshe:.096},
+  "تیر":    {fr:1662918768,hz:981206068,sr:681712699,fe:6813,se:2792.91,ykh:82808376,tkh:11130268,xnk:0,nerkh:244074,pal:3,miq:0,hshe:.410},
+  "مرداد":  {fr:11434699388,hz:6362194464,sr:5072504923,fe:41062,se:18215.36,ykh:82808376,tkh:11666667,xnk:0,nerkh:278474,pal:3,miq:0,hshe:.444},
+  "شهریور": {fr:17354291204,hz:15700812636,sr:1653478567,fe:62932,se:5888.91,ykh:662467007,tkh:38640813,xnk:628800000,nerkh:280165,pal:24,miq:15720,hshe:.095},
+  "مهر":    {fr:67562413191,hz:50736543790,sr:16825869400,fe:224487,se:55841.90,ykh:2539456860,tkh:0,xnk:2710480000,nerkh:301321,pal:92,miq:67762,hshe:.249},
+  "آبان":   {fr:81769162610,hz:61822030156,sr:19947132453,fe:276122,se:67369.71,ykh:3146718283,tkh:408380908,xnk:3253080000,nerkh:296268,pal:114,miq:81327,hshe:.244},
+  "آذر":    {fr:87778496117,hz:63898275181,sr:23880220935,fe:265155,se:71918.07,ykh:3036307116,tkh:1574000000,xnk:3274760000,nerkh:332753,pal:110,miq:81869,hshe:.272},
+  "دی":     {fr:98263196000,hz:67162442759,sr:31100753240,fe:262099,se:82930.36,ykh:3257129451,tkh:2975800000,xnk:3308920000,nerkh:375246,pal:118,miq:82723,hshe:.317},
+  "بهمن":   {fr:147991717000,hz:92484829143,sr:55506887856,fe:356868,se:132523.56,ykh:4388843922,tkh:4290900000,xnk:4730560000,nerkh:412638,pal:159,miq:118264,hshe:.375},
+  "اسفند":  {fr:39794832000,hz:17741809174,sr:22053022825,fe:89628,se:49668.97,ykh:938494927,tkh:1028077000,xnk:825760000,nerkh:444000,pal:34,miq:20644,hshe:.554},
+}},
+"سکند گلف":{curr:"OMR",mo:{
+  "شهریور": {fr:18142643167,hz:13776520414,sr:4366122752,fe:6985,se:1676.53*OMR2AED,ykh:849055800,tkh:102385713,xnk:711680000,nerkh:2598909,pal:29,miq:17792,hshe:.241},
+  "مهر":    {fr:101207069871,hz:78168085883,sr:23038983987,fe:35212,se:7982.51*OMR2AED,ykh:4684445790,tkh:542145594,xnk:4078040000,nerkh:2873077,pal:160,miq:101951,hshe:.228},
+  "آبان":   {fr:114237053095,hz:92659069057,sr:21577984037,fe:41909,se:7607.49*OMR2AED,ykh:5884835024,tkh:816719575,xnk:4810200000,nerkh:2715812,pal:201,miq:120255,hshe:.189},
+  "آذر":    {fr:81829912155,hz:66602069004,sr:15227843150,fe:25534,se:4742.28*OMR2AED,ykh:4011056708,tkh:3377250000,xnk:3331840000,nerkh:3225639,pal:137,miq:83296,hshe:.186},
+  "دی":     {fr:138144210750,hz:108670701470,sr:29473509279,fe:38765,se:8264.67*OMR2AED,ykh:6528946320,tkh:5675442000,xnk:5417480000,nerkh:3568234,pal:223,miq:135437,hshe:.213},
+  "بهمن":   {fr:203833872900,hz:138846316779,sr:64987556120,fe:51734,se:16425.33*OMR2AED,ykh:7992835630,tkh:9408120000,xnk:6812400000,nerkh:3950545,pal:273,miq:170310,hshe:.319},
+  "اسفند":  {fr:52260238800,hz:28432562526,sr:23827676273,fe:12586,se:5732.75*OMR2AED,ykh:1639556027,tkh:2248526000,xnk:1382520000,nerkh:4152185,pal:56,miq:34563,hshe:.456},
+}},
+};
+const TOTALS={
+  "سعید کرمی":{fr:728630923436,hz:524455281577,sr:159678319082,fe:2117431,se:439651.01,ykh:26807551112,tkh:13819739610,xnk:28862840000,pal:1033,miq:721571,hshe:.219,curr:"AED"},
+  "فیت استور": {fr:674688864270,hz:465002918139,sr:209685946131,fe:205695,se:52922.64*OMR2AED,ykh:29193639656,tkh:1347009181,xnk:25648200000,pal:1013,miq:641205,hshe:.311,curr:"OMR"},
+  "گلفود":     {fr:427297437491,hz:332877609198,sr:94419828293,fe:1261161,se:278301.82,ykh:13728113227,tkh:0,xnk:17678560000,pal:659,miq:441964,hshe:.159,curr:"AED"},
+  "المرتضی":   {fr:557484405278,hz:380389564198,sr:177094841080,fe:1602541,se:488824.39,ykh:18273048278,tkh:10354974966,xnk:18732360000,pal:662,miq:468309,hshe:.318,curr:"AED"},
+  "سکند گلف":  {fr:709655000738,hz:527155325136,sr:182499675602,fe:212725,se:52431.55*OMR2AED,ykh:31590731299,tkh:22170588882,xnk:26544160000,pal:1079,miq:663604,hshe:.257,curr:"OMR"},
+};
+
+/* ── helpers ── */
+function ri(n){if(!n||n===0)return'—';return Math.round(n).toLocaleString('fa-IR');}
+function pct(n){return(n*100).toFixed(1)+'٪';}
+function cl(n){return n<0?'neg':'pos';}
+
+function showPage(id,btn){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  btn.classList.add('on');
+}
+
+document.getElementById('rdate').textContent=new Date().toLocaleDateString('fa-IR');
+
+/* totals */
+const TFR=BR.reduce((a,b)=>a+TOTALS[b].fr,0);
+const THZ=BR.reduce((a,b)=>a+TOTALS[b].hz,0);
+const TSR=BR.reduce((a,b)=>a+TOTALS[b].sr,0);
+const TSE=BR.reduce((a,b)=>a+TOTALS[b].se,0);
+const TPA=BR.reduce((a,b)=>a+TOTALS[b].pal,0);
+const TMQ=BR.reduce((a,b)=>a+TOTALS[b].miq,0);
+const TYKH=BR.reduce((a,b)=>a+TOTALS[b].ykh,0);
+const TTKH=BR.reduce((a,b)=>a+TOTALS[b].tkh,0);
+const TXNK=BR.reduce((a,b)=>a+TOTALS[b].xnk,0);
+
+/* ══════════ PAGE 1: EXEC ══════════ */
+// Insights
+const bestBrSR = BR.reduce((a,b)=>TOTALS[b].sr>TOTALS[a].sr?b:a);
+const bestBrHSH = BR.reduce((a,b)=>TOTALS[b].hshe>TOTALS[a].hshe?b:a);
+const bestBrAED = BR.reduce((a,b)=>TOTALS[b].se>TOTALS[a].se?b:a);
+// بهترین ماه کل
+let bestMoSR=0,bestMoName='';
+MO.forEach(mo=>{const t=BR.reduce((s,b)=>s+(DATA[b].mo[mo]?.sr||0),0);if(t>bestMoSR){bestMoSR=t;bestMoName=mo;}});
+// روند نرخ
+const avgNerkhAkhir=Object.values(DATA['سعید کرمی'].mo).slice(-1)[0].nerkh;
+const avgNerkhAval=Object.values(DATA['سعید کرمی'].mo)[0].nerkh;
+const nerkhGrowth=((avgNerkhAkhir-avgNerkhAval)/avgNerkhAval*100).toFixed(0);
+
+const insights=[
+  {it:'پرسودترین شعبه (ریالی)',iv:`${bestBrSR} — ${ri(TOTALS[bestBrSR].sr)} ریال`,ac:'#2563a8'},
+  {it:'بالاترین حاشیه سود',iv:`${bestBrHSH} — ${pct(TOTALS[bestBrHSH].hshe)}`,ac:'#0f766e'},
+  {it:'بالاترین سود ارزی (AED)',iv:`${bestBrAED} — ${Math.round(TOTALS[bestBrAED].se).toLocaleString('fa-IR')} AED`,ac:'#f59e0b'},
+  {it:'پرسودترین ماه کل شرکت',iv:`${bestMoName} — ${ri(bestMoSR)} ریال`,ac:'#7c3aed'},
+  {it:'رشد نرخ ارز در سال',iv:`از ${ri(avgNerkhAval)} به ${ri(avgNerkhAkhir)} ریال (+${nerkhGrowth}٪)`,ac:'#dc2626'},
+  {it:'سود ارزی کل شرکت',iv:`${Math.round(TSE).toLocaleString('fa-IR')} AED`,ac:'#0891b2'},
+];
+const il=document.getElementById('insightList');
+insights.forEach(x=>il.innerHTML+=`<div class="insight" style="--ac:${x.ac}"><div class="it">${x.it}</div><div class="iv">${x.iv}</div></div>`);
+
+// KPI exec
+const ke=[
+  {lb:'فروش خالص کل',vl:ri(TFR),sb:'ریال',ac:'#2563a8'},
+  {lb:'سود ناخالص کل',vl:ri(TSR),sb:'ریال',ac:'#0f766e'},
+  {lb:'سود ارزی کل',vl:Math.round(TSE).toLocaleString('fa-IR'),sb:'AED درهم',ac:'#f59e0b',gold:true},
+  {lb:'حاشیه سود میانگین',vl:pct(TSR/TFR),sb:'وزنی',ac:'#7c3aed'},
+  {lb:'کل پالت',vl:ri(TPA),sb:'جمع شعب',ac:'#0891b2'},
+  {lb:'کل مقدار سیب',vl:ri(TMQ),sb:'کیلوگرم',ac:'#dc2626'},
+];
+const kge=document.getElementById('kpiExec');
+ke.forEach(k=>kge.innerHTML+=`<div class="kpi${k.gold?' kpi-gold':''}" style="--ac:${k.ac}"><div class="lb">${k.lb}</div><div class="vl">${k.vl}</div><div class="sb">${k.sb}</div></div>`);
+
+// chart E1 - سود ریالی شعب
+const lgE1=document.getElementById('lgE1');
+BR.forEach((b,i)=>lgE1.innerHTML+=`<span><span class="lsq" style="background:${CLR[i]}"></span>${b}</span>`);
+new Chart(document.getElementById('cE1'),{type:'bar',data:{labels:BR,datasets:[{data:BR.map(b=>+(TOTALS[b].sr/1e9).toFixed(1)),backgroundColor:CLR,borderRadius:4,barPercentage:.6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.parsed.y} میلیارد`}}},scales:{x:{ticks:{font:{size:10},color:'#64748b'},grid:{display:false}},y:{ticks:{font:{size:9},color:'#64748b',callback:v=>v+'B'},grid:{color:'rgba(0,0,0,.06)'}}}}});
+
+// chart E2 - حاشیه سود
+new Chart(document.getElementById('cE2'),{type:'bar',data:{labels:BR,datasets:[{data:BR.map(b=>+(TOTALS[b].hshe*100).toFixed(1)),backgroundColor:CLR,borderRadius:4,barPercentage:.6}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.parsed.x}٪`}}},scales:{x:{ticks:{font:{size:9},color:'#64748b',callback:v=>v+'٪'},grid:{color:'rgba(0,0,0,.06)'}},y:{ticks:{font:{size:11},color:'#64748b'},grid:{display:false}}}}});
+
+// chart E3 - روند سود ماهانه
+const moSR=MO.map(mo=>BR.reduce((s,b)=>s+(DATA[b].mo[mo]?.sr||0),0));
+new Chart(document.getElementById('cE3'),{type:'line',data:{labels:MO,datasets:[{data:moSR.map(v=>+(v/1e9).toFixed(1)),borderColor:'#2563a8',backgroundColor:'rgba(37,99,168,.08)',borderWidth:2.5,pointRadius:3,fill:true,tension:.35}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.parsed.y} میلیارد`}}},scales:{x:{ticks:{font:{size:9},color:'#64748b',maxRotation:45,autoSkip:false},grid:{display:false}},y:{ticks:{font:{size:9},color:'#64748b',callback:v=>v+'B'},grid:{color:'rgba(0,0,0,.06)'}}}}});
+
+// chart E4 - سود ارزی ماهانه کل
+const moSE=MO.map(mo=>BR.reduce((s,b)=>s+(DATA[b].mo[mo]?.se||0),0));
+new Chart(document.getElementById('cE4'),{type:'line',data:{labels:MO,datasets:[{data:moSE.map(v=>+v.toFixed(0)),borderColor:'#f59e0b',backgroundColor:'rgba(245,158,11,.08)',borderWidth:2.5,pointRadius:3,fill:true,tension:.35}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.parsed.y.toLocaleString()} AED`}}},scales:{x:{ticks:{font:{size:9},color:'#64748b',maxRotation:45,autoSkip:false},grid:{display:false}},y:{ticks:{font:{size:9},color:'#64748b'},grid:{color:'rgba(0,0,0,.06)'}}}}});
+
+/* ══════════ PAGE 2: RIAL ══════════ */
+const kR=[
+  {lb:'فروش خالص کل (ریال)',vl:ri(TFR),sb:'جمع ۵ شعبه',ac:'#2563a8'},
+  {lb:'هزینه کل (ریال)',vl:ri(THZ),sb:'جمع ۵ شعبه',ac:'#b45309'},
+  {lb:'سود ناخالص (ریال)',vl:ri(TSR),sb:'جمع ۵ شعبه',ac:'#0f766e'},
+  {lb:'حاشیه سود میانگین',vl:pct(TSR/TFR),sb:'وزنی',ac:'#7c3aed'},
+  {lb:'کل پالت',vl:ri(TPA),sb:'جمع شعب',ac:'#0891b2'},
+  {lb:'کل مقدار سیب (کیلو)',vl:ri(TMQ),sb:'جمع شعب',ac:'#dc2626'},
+];
+const kgR=document.getElementById('kpiR');
+kR.forEach(k=>kgR.innerHTML+=`<div class="kpi" style="--ac:${k.ac}"><div class="lb">${k.lb}</div><div class="vl">${k.vl}</div><div class="sb">${k.sb}</div></div>`);
+
+const lgR1=document.getElementById('lgR1');
+BR.forEach((b,i)=>lgR1.innerHTML+=`<span><span class="lsq" style="background:${CLR[i]}"></span>${b}: ${(TOTALS[b].fr/1e9).toFixed(0)}B</span>`);
+new Chart(document.getElementById('cR1'),{type:'bar',data:{labels:BR,datasets:[{data:BR.map(b=>+(TOTALS[b].fr/1e9).toFixed(1)),backgroundColor:CLR,borderRadius:4,barPercentage:.6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.parsed.y} میلیارد`}}},scales:{x:{ticks:{font:{size:10},color:'#64748b'},grid:{display:false}},y:{ticks:{font:{size:9},color:'#64748b',callback:v=>v+'B'},grid:{color:'rgba(0,0,0,.06)'}}}}});
+
+const lgR2=document.getElementById('lgR2');
+BR.forEach((b,i)=>{const p=(TOTALS[b].fr/TFR*100).toFixed(1);lgR2.innerHTML+=`<span><span class="lsq" style="background:${CLR[i]}"></span>${b}: ${p}٪</span>`;});
+new Chart(document.getElementById('cR2'),{type:'doughnut',data:{labels:BR,datasets:[{data:BR.map(b=>+(TOTALS[b].fr/1e9).toFixed(1)),backgroundColor:CLR,borderWidth:0,hoverOffset:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.parsed.toFixed(1)} میلیارد`}}}}});
+
+// سود ماهانه هر شعبه
+const lgR3=document.getElementById('lgR3');
+BR.forEach((b,i)=>lgR3.innerHTML+=`<span><span class="lsq" style="background:${CLR[i]}"></span>${b}</span>`);
+new Chart(document.getElementById('cR3'),{type:'line',data:{labels:MO,datasets:BR.map((b,i)=>({label:b,data:MO.map(mo=>+((DATA[b].mo[mo]?.sr||0)/1e9).toFixed(1)),borderColor:CLR[i],backgroundColor:'transparent',borderWidth:1.8,pointRadius:2,tension:.3}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y} میلیارد`}}},scales:{x:{ticks:{font:{size:9},color:'#64748b',maxRotation:45,autoSkip:false},grid:{display:false}},y:{ticks:{font:{size:9},color:'#64748b',callback:v=>v+'B'},grid:{color:'rgba(0,0,0,.06)'}}}}});
+
+// نرخ ارز
+const lgR4=document.getElementById('lgR4');
+const nerkhBranches=['سعید کرمی','گلفود','المرتضی'];
+const nerkhBrAED=['فیت استور','سکند گلف'];
+nerkhBranches.forEach((b,i)=>lgR4.innerHTML+=`<span><span class="lsq" style="background:${CLR[i]}"></span>${b}(AED)</span>`);
+nerkhBrAED.forEach((b,i)=>lgR4.innerHTML+=`<span><span class="lsq" style="background:${CLR[3+i]}"></span>${b}(OMR)</span>`);
+const allNerkhBr=[...nerkhBranches,...nerkhBrAED];
+new Chart(document.getElementById('cR4'),{type:'line',data:{labels:MO,datasets:allNerkhBr.map((b,i)=>({label:b,data:MO.map(mo=>DATA[b].mo[mo]?.nerkh||null),borderColor:CLR[i],backgroundColor:'transparent',borderWidth:1.8,pointRadius:2,tension:.3,spanGaps:true}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y?.toLocaleString('fa-IR')}`}}},scales:{x:{ticks:{font:{size:9},color:'#64748b',maxRotation:45,autoSkip:false},grid:{display:false}},y:{ticks:{font:{size:9},color:'#64748b',callback:v=>v.toLocaleString()},grid:{color:'rgba(0,0,0,.06)'}}}}});
+
+// table rial
+const tR=document.getElementById('tblR'),tRF=document.getElementById('tblRF');
+let GFR2=0,GHZ2=0,GSR2=0,GPA2=0,GMQ2=0;
+BR.forEach((b,i)=>{
+  const t=TOTALS[b];GFR2+=t.fr;GHZ2+=t.hz;GSR2+=t.sr;GPA2+=t.pal;GMQ2+=t.miq;
+  const spp=t.pal>0?Math.round(t.sr/t.pal):0;
+  tR.innerHTML+=`<tr><td style="font-weight:600;color:${CLR[i]}">${b}</td><td class="c">${ri(t.fr)}</td><td class="c">${ri(t.hz)}</td><td class="c">${ri(t.sr)}</td><td class="c"><span class="pos">${pct(t.hshe)}</span></td><td class="c">${ri(t.pal)}</td><td class="c">${ri(t.miq)}</td><td class="c">${ri(spp)}</td></tr>`;
+});
+tRF.innerHTML=`<tr class="tot"><td>جمع</td><td class="c">${ri(GFR2)}</td><td class="c">${ri(GHZ2)}</td><td class="c">${ri(GSR2)}</td><td class="c">${pct(GSR2/GFR2)}</td><td class="c">${ri(GPA2)}</td><td class="c">${ri(GMQ2)}</td><td class="c">${ri(Math.round(GSR2/GPA2))}</td></tr>`;
+
+/* ══════════ PAGE 3: AED ══════════ */
+const kA=[
+  {lb:'سود ارزی کل شرکت (AED)',vl:Math.round(TSE).toLocaleString('fa-IR'),sb:'جمع ۵ شعبه'},
+  {lb:'فروش ارزی کل',vl:Math.round(BR.reduce((a,b)=>a+TOTALS[b].fe,0)).toLocaleString('fa-IR'),sb:'واحد ارزی'},
+  {lb:'سود AED — سعید کرمی',vl:Math.round(TOTALS['سعید کرمی'].se).toLocaleString('fa-IR'),sb:'AED مستقیم'},
+  {lb:'سود AED — گلفود',vl:Math.round(TOTALS['گلفود'].se).toLocaleString('fa-IR'),sb:'AED مستقیم'},
+  {lb:'سود AED — المرتضی',vl:Math.round(TOTALS['المرتضی'].se).toLocaleString('fa-IR'),sb:'AED مستقیم'},
+  {lb:'سود AED — فیت استور',vl:Math.round(TOTALS['فیت استور'].se).toLocaleString('fa-IR'),sb:'OMR×۹.۵'},
+];
+const kgA=document.getElementById('kpiAED');
+kA.forEach(k=>kgA.innerHTML+=`<div class="kpi kpi-gold"><div class="lb">${k.lb}</div><div class="vl">${k.vl}</div><div class="sb">${k.sb}</div></div>`);
+const kgA2=document.getElementById('kpiAED2');
+kgA2.innerHTML+=`<div class="kpi kpi-gold"><div class="lb">سود AED — سکند گلف</div><div class="vl">${Math.round(TOTALS['سکند گلف'].se).toLocaleString('fa-IR')}</div><div class="sb">OMR×۹.۵</div></div>`;
+kgA2.innerHTML+=`<div class="kpi kpi-gold"><div class="lb">مجموع AED سه شعبه مستقیم</div><div class="vl">${Math.round(TOTALS['سعید کرمی'].se+TOTALS['گلفود'].se+TOTALS['المرتضی'].se).toLocaleString('fa-IR')}</div><div class="sb">AED</div></div>`;
+kgA2.innerHTML+=`<div class="kpi kpi-gold"><div class="lb">مجموع AED دو شعبه OMR</div><div class="vl">${Math.round(TOTALS['فیت استور'].se+TOTALS['سکند گلف'].se).toLocaleString('fa-IR')}</div><div class="sb">پس از تبدیل ×۹.۵</div></div>`;
+
+const lgA1=document.getElementById('lgA1');
+BR.forEach((b,i)=>lgA1.innerHTML+=`<span><span class="lsq" style="background:${CLR[i]}"></span>${b}: ${Math.round(TOTALS[b].se).toLocaleString()}</span>`);
+new Chart(document.getElementById('cA1'),{type:'bar',data:{labels:BR,datasets:[{data:BR.map(b=>Math.round(TOTALS[b].se)),backgroundColor:CLR,borderRadius:4,barPercentage:.6}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.parsed.y.toLocaleString()} AED`}}},scales:{x:{ticks:{font:{size:10},color:'#64748b'},grid:{display:false}},y:{ticks:{font:{size:9},color:'#64748b'},grid:{color:'rgba(0,0,0,.06)'}}}}});
+
+const lgA2=document.getElementById('lgA2');
+BR.forEach((b,i)=>lgA2.innerHTML+=`<span><span class="lsq" style="background:${CLR[i]}"></span>${b}</span>`);
+new Chart(document.getElementById('cA2'),{type:'bar',data:{labels:MO,datasets:BR.map((b,i)=>({label:b,data:MO.map(mo=>+(DATA[b].mo[mo]?.se||0).toFixed(0)),backgroundColor:CLR[i],borderRadius:2}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y.toLocaleString()} AED`}}},scales:{x:{stacked:true,ticks:{font:{size:9},color:'#64748b',maxRotation:45,autoSkip:false},grid:{display:false}},y:{stacked:true,ticks:{font:{size:9},color:'#64748b'},grid:{color:'rgba(0,0,0,.06)'}}}}});
+
+const tA=document.getElementById('tblA'),tAF=document.getElementById('tblAF');
+let GSE2=0;
+BR.forEach((b,i)=>{
+  const t=TOTALS[b];GSE2+=t.se;
+  const origSE=t.curr==='OMR'?t.se/OMR2AED:t.se;
+  const origLabel=t.curr==='OMR'?`${origSE.toFixed(2)} OMR`:`${Math.round(t.se).toLocaleString()} AED`;
+  tA.innerHTML+=`<tr><td style="font-weight:600;color:${CLR[i]}">${b}</td><td class="c"><span class="cb-badge ${t.curr}">${t.curr}</span></td><td class="c">${Math.round(t.fe).toLocaleString('fa-IR')}</td><td class="c">${origLabel}</td><td class="c">${Math.round(t.se).toLocaleString('fa-IR')} AED</td><td class="c">${ri(t.fr)}</td><td class="c">${pct(t.hshe)}</td></tr>`;
+});
+tAF.innerHTML=`<tr class="tot"><td>جمع</td><td class="c">—</td><td class="c">—</td><td class="c">—</td><td class="c">${Math.round(GSE2).toLocaleString('fa-IR')} AED</td><td class="c">${ri(TFR)}</td><td class="c">${pct(TSR/TFR)}</td></tr>`;
+
+/* ══════════ PAGE 4: COST ══════════ */
+const kC=[
+  {lb:'کرایه یخچال کل (ریال)',vl:ri(TYKH),sb:'جمع شعب',ac:'#2563a8'},
+  {lb:'تخلیه و بارگیری (ریال)',vl:ri(TTKH),sb:'جمع شعب',ac:'#b45309'},
+  {lb:'هزینه خنک‌کردن (ریال)',vl:ri(TXNK),sb:'جمع شعب',ac:'#0f766e'},
+];
+const kgC=document.getElementById('kpiCost');
+kC.forEach(k=>kgC.innerHTML+=`<div class="kpi" style="--ac:${k.ac}"><div class="lb">${k.lb}</div><div class="vl">${k.vl}</div><div class="sb">${k.sb}</div></div>`);
+
+const lgC1=document.getElementById('lgC1');
+const costLabels=['هزینه اصلی کالا','کرایه یخچال','تخلیه/بارگیری','خنک‌کردن'];
+const costVals=[THZ-TYKH-TTKH-TXNK,TYKH,TTKH,TXNK];
+const costCLR=['#2563a8','#0f766e','#b45309','#7c3aed'];
+costLabels.forEach((l,i)=>lgC1.innerHTML+=`<span><span class="lsq" style="background:${costCLR[i]}"></span>${l}: ${(costVals[i]/THZ*100).toFixed(0)}٪</span>`);
+new Chart(document.getElementById('cC1'),{type:'doughnut',data:{labels:costLabels,datasets:[{data:costVals.map(v=>+(v/1e9).toFixed(1)),backgroundColor:costCLR,borderWidth:0,hoverOffset:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.label}: ${c.parsed.toFixed(1)} میلیارد (${(c.parsed/costVals.reduce((a,v)=>a+v,0)*1e9*100).toFixed(0)}٪)`}}}}});
+
+const lgC2=document.getElementById('lgC2');
+BR.forEach((b,i)=>lgC2.innerHTML+=`<span><span class="lsq" style="background:${CLR[i]}"></span>${b}</span>`);
+new Chart(document.getElementById('cC2'),{type:'bar',data:{labels:MO,datasets:BR.map((b,i)=>({label:b,data:MO.map(mo=>+((DATA[b].mo[mo]?.ykh||0)/1e9).toFixed(2)),backgroundColor:CLR[i],borderRadius:2}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y} میلیارد`}}},scales:{x:{stacked:true,ticks:{font:{size:9},color:'#64748b',maxRotation:45,autoSkip:false},grid:{display:false}},y:{stacked:true,ticks:{font:{size:9},color:'#64748b',callback:v=>v+'B'},grid:{color:'rgba(0,0,0,.06)'}}}}});
+
+const lgC3=document.getElementById('lgC3');
+BR.forEach((b,i)=>lgC3.innerHTML+=`<span><span class="lsq" style="background:${CLR[i]}"></span>${b}</span>`);
+new Chart(document.getElementById('cC3'),{type:'line',data:{labels:MO,datasets:BR.map((b,i)=>({label:b,data:MO.map(mo=>{const d=DATA[b].mo[mo];return d&&d.fr>0?+((d.ykh/d.fr)*100).toFixed(1):null;}),borderColor:CLR[i],backgroundColor:'transparent',borderWidth:1.8,pointRadius:2,tension:.3,spanGaps:true}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y}٪`}}},scales:{x:{ticks:{font:{size:9},color:'#64748b',maxRotation:45,autoSkip:false},grid:{display:false}},y:{ticks:{font:{size:9},color:'#64748b',callback:v=>v+'٪'},grid:{color:'rgba(0,0,0,.06)'}}}}});
+
+const lgC4=document.getElementById('lgC4');
+BR.forEach((b,i)=>lgC4.innerHTML+=`<span><span class="lsq" style="background:${CLR[i]}"></span>${b}</span>`);
+new Chart(document.getElementById('cC4'),{type:'bar',data:{labels:MO,datasets:BR.map((b,i)=>({label:b,data:MO.map(mo=>+((DATA[b].mo[mo]?.tkh||0)/1e9).toFixed(2)),backgroundColor:CLR[i],borderRadius:2}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.dataset.label}: ${c.parsed.y} میلیارد`}}},scales:{x:{stacked:true,ticks:{font:{size:9},color:'#64748b',maxRotation:45,autoSkip:false},grid:{display:false}},y:{stacked:true,ticks:{font:{size:9},color:'#64748b',callback:v=>v+'B'},grid:{color:'rgba(0,0,0,.06)'}}}}});
+
+const tC=document.getElementById('tblC'),tCF=document.getElementById('tblCF');
+let GYKH=0,GTKH=0,GXNK=0,GHZ3=0;
+BR.forEach((b,i)=>{
+  const t=TOTALS[b];GYKH+=t.ykh;GTKH+=t.tkh;GXNK+=t.xnk;GHZ3+=t.hz;
+  const hz_asl=t.hz-t.ykh-t.tkh-t.xnk;
+  tC.innerHTML+=`<tr><td style="font-weight:600;color:${CLR[i]}">${b}</td><td class="c">${ri(hz_asl)}</td><td class="c">${ri(t.ykh)}</td><td class="c">${ri(t.tkh)}</td><td class="c">${ri(t.xnk)}</td><td class="c">${ri(t.hz)}</td><td class="c">${(t.ykh/t.hz*100).toFixed(1)}٪</td><td class="c">${(t.tkh/t.hz*100).toFixed(1)}٪</td><td class="c">${(t.xnk/t.hz*100).toFixed(1)}٪</td></tr>`;
+});
+tCF.innerHTML=`<tr class="tot"><td>جمع</td><td class="c">${ri(GHZ3-GYKH-GTKH-GXNK)}</td><td class="c">${ri(GYKH)}</td><td class="c">${ri(GTKH)}</td><td class="c">${ri(GXNK)}</td><td class="c">${ri(GHZ3)}</td><td class="c">${(GYKH/GHZ3*100).toFixed(1)}٪</td><td class="c">${(GTKH/GHZ3*100).toFixed(1)}٪</td><td class="c">${(GXNK/GHZ3*100).toFixed(1)}٪</td></tr>`;
+
+/* ══════════ PAGE 5: RANKING ══════════ */
+function makeRnk(containerId,vals,fmt){
+  const sorted=[...vals].sort((a,b)=>b.v-a.v);
+  const el=document.getElementById(containerId);
+  sorted.forEach((x,i)=>{
+    const badge=`<span class="rnk rnk-${i+1<4?i+1:''}" style="${i>=3?'background:#f1f5f9;color:#64748b;':''}">${i+1}</span>`;
+    el.innerHTML+=`<div style="display:flex;align-items:center;padding:9px 0;border-bottom:1px solid #dde4ef;gap:6px;">${badge}<span style="flex:1;font-size:12px;color:${CLR[BR.indexOf(x.n)]};font-weight:600">${x.n}</span><span style="font-size:12px;font-weight:600;color:#1e293b">${fmt(x.v)}</span></div>`;
+  });
+}
+makeRnk('rnkSR',BR.map(b=>({n:b,v:TOTALS[b].sr})),v=>ri(v)+' ر');
+makeRnk('rnkHSH',BR.map(b=>({n:b,v:TOTALS[b].hshe})),v=>pct(v));
+makeRnk('rnkAED',BR.map(b=>({n:b,v:TOTALS[b].se})),v=>Math.round(v).toLocaleString('fa-IR')+' AED');
+
+// سود به ازای پالت
+const lgRK1=document.getElementById('lgRK1');
+BR.forEach((b,i)=>lgRK1.innerHTML+=`<span><span class="lsq" style="background:${CLR[i]}"></span>${b}</span>`);
+new Chart(document.getElementById('cRK1'),{type:'bar',data:{labels:BR,datasets:[{data:BR.map(b=>+(TOTALS[b].sr/TOTALS[b].pal/1e6).toFixed(1)),backgroundColor:CLR,borderRadius:4,barPercentage:.6}]},options:{responsive:true,maintainAspectRatio:false,indexAxis:'y',plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>`${c.parsed.x} میلیون ریال / پالت`}}},scales:{x:{ticks:{font:{size:9},color:'#64748b'},grid:{color:'rgba(0,0,0,.06)'}},y:{ticks:{font:{size:11},color:'#64748b'},grid:{display:false}}}}});
+
+// radar chart
+const radarMetrics=['سود ریالی','حاشیه سود','سود AED','سود/پالت','حجم فروش'];
+const maxSR=Math.max(...BR.map(b=>TOTALS[b].sr));
+const maxHSH=Math.max(...BR.map(b=>TOTALS[b].hshe));
+const maxSE=Math.max(...BR.map(b=>TOTALS[b].se));
+const maxSPP=Math.max(...BR.map(b=>TOTALS[b].sr/TOTALS[b].pal));
+const maxFR=Math.max(...BR.map(b=>TOTALS[b].fr));
+new Chart(document.getElementById('cRK2'),{type:'radar',data:{labels:radarMetrics,datasets:BR.map((b,i)=>({label:b,data:[TOTALS[b].sr/maxSR*100,TOTALS[b].hshe/maxHSH*100,TOTALS[b].se/maxSE*100,(TOTALS[b].sr/TOTALS[b].pal)/maxSPP*100,TOTALS[b].fr/maxFR*100],backgroundColor:CLR[i]+'22',borderColor:CLR[i],borderWidth:1.5,pointRadius:3}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{font:{size:10},padding:8}}},scales:{r:{ticks:{display:false},grid:{color:'rgba(0,0,0,.08)'},angleLines:{color:'rgba(0,0,0,.08)'}}}}});
+
+// بهترین ماه
+const tB=document.getElementById('tblBest');
+BR.forEach((b,i)=>{
+  let bm='',bsr=0,bse=0,bhsh=0;
+  MO.forEach(mo=>{const d=DATA[b].mo[mo];if(d&&d.sr>bsr){bsr=d.sr;bm=mo;bse=d.se;bhsh=d.hshe;}});
+  tB.innerHTML+=`<tr class="best"><td style="font-weight:600;color:${CLR[i]}">${b}</td><td class="c" style="font-weight:600">${bm}</td><td class="c">${ri(bsr)}</td><td class="c"><span class="pos">${pct(bhsh)}</span></td><td class="c">${Math.round(bse).toLocaleString('fa-IR')} AED</td></tr>`;
+});
+
+/* ══════════ PAGE 6: DETAIL ══════════ */
+const tabBar=document.getElementById('tabBar'),tabPanels=document.getElementById('tabPanels');
+BR.forEach((br,i)=>{
+  const curr=DATA[br].curr;
+  const btn=document.createElement('button');
+  btn.className='tb'+(i===0?' on':'');
+  btn.innerHTML=`<span class="cb-badge ${curr}">${curr}</span>${br}`;
+  btn.onclick=()=>{
+    document.querySelectorAll('.tb').forEach(x=>x.classList.remove('on'));
+    document.querySelectorAll('.pnl').forEach(x=>x.classList.remove('on'));
+    btn.classList.add('on');document.getElementById('p'+i).classList.add('on');
+  };
+  tabBar.appendChild(btn);
+
+  const mos=DATA[br].mo;
+  let rows='',tFR=0,tHZ=0,tSR=0,tFE=0,tSE=0,tYKH=0,tTKH=0,tXNK=0,tPA=0,tMQ=0,prev=null;
+  MO.forEach(mo=>{
+    const d=mos[mo];if(!d)return;
+    tFR+=d.fr;tHZ+=d.hz;tSR+=d.sr;tFE+=d.fe;tSE+=d.se;tYKH+=d.ykh;tTKH+=d.tkh;tXNK+=d.xnk;tPA+=d.pal;tMQ+=d.miq;
+    const mg=(d.hshe*100).toFixed(1);
+    let gr='';
+    if(prev!==null&&prev>0){const g=((d.sr-prev)/prev*100).toFixed(0);gr=`<span class="${parseFloat(g)<0?'neg':'pos'}" style="font-size:9px">${parseFloat(g)>0?'▲':'▼'}${Math.abs(g)}٪</span>`;}
+    if(d.sr>0)prev=d.sr;
+    const origSE=curr==='OMR'?(d.se/OMR2AED).toFixed(2)+' OMR':Math.round(d.se).toLocaleString()+' AED';
+    rows+=`<tr>
+      <td style="font-weight:600">${mo}</td>
+      <td class="c">${ri(d.fr)}</td><td class="c">${ri(d.hz)}</td><td class="c">${ri(d.sr)}</td>
+      <td class="c">${gr}</td><td class="c"><span class="${d.hshe<0?'neg':'pos'}">${mg}٪</span></td>
+      <td class="c">${origSE}</td><td class="c">${Math.round(d.se).toLocaleString('fa-IR')} AED</td>
+      <td class="c">${ri(d.ykh)}</td><td class="c">${ri(d.tkh)}</td><td class="c">${ri(d.xnk)}</td>
+      <td class="c">${Math.round(d.nerkh).toLocaleString('fa-IR')}</td>
+      <td class="c">${d.pal||'—'}</td><td class="c">${d.miq>0?ri(d.miq):'—'}</td>
+    </tr>`;
+  });
+  const origTSE=curr==='OMR'?(tSE/OMR2AED).toFixed(2)+' OMR':Math.round(tSE).toLocaleString()+' AED';
+  rows+=`<tr class="tot"><td>جمع سال</td><td class="c">${ri(tFR)}</td><td class="c">${ri(tHZ)}</td><td class="c">${ri(tSR)}</td><td class="c">—</td><td class="c">${pct(tSR/tFR)}</td><td class="c">${origTSE}</td><td class="c">${Math.round(tSE).toLocaleString('fa-IR')} AED</td><td class="c">${ri(tYKH)}</td><td class="c">${ri(tTKH)}</td><td class="c">${ri(tXNK)}</td><td class="c">—</td><td class="c">${ri(tPA)}</td><td class="c">${ri(tMQ)}</td></tr>`;
+
+  const pnl=document.createElement('div');
+  pnl.className='pnl'+(i===0?' on':'');pnl.id='p'+i;
+  pnl.innerHTML=`<div class="tw"><table><thead><tr>
+    <th>ماه</th><th class="c">فروش خالص (ریال)</th><th class="c">هزینه کل (ریال)</th><th class="c">سود ناخالص (ریال)</th>
+    <th class="c">رشد</th><th class="c">حاشیه</th>
+    <th class="c">سود (${curr})</th><th class="c">سود (AED)</th>
+    <th class="c">کرایه یخچال</th><th class="c">تخلیه/بارگیری</th><th class="c">خنک‌کردن</th>
+    <th class="c">نرخ (ریال)</th><th class="c">پالت</th><th class="c">مقدار سیب</th>
+  </tr></thead><tbody>${rows}</tbody></table></div>`;
+  tabPanels.appendChild(pnl);
+});
+</script>
+</body>
+</html>
